@@ -1,18 +1,13 @@
-# app/controllers/application_controller.rb
-
 class ApplicationController < ActionController::Base
-    after_action :redirect_user_based_on_type
-  
-    private
-  
-    def redirect_user_based_on_type
-      return unless user_signed_in?
-  
-      if current_user.admin?
-        redirect_to admin_dashboard_path # Replace with your admin dashboard path
-      elsif current_user.trader?
-        redirect_to trader_dashboard_path # Replace with your trader dashboard path
-      end
+  def after_sign_in_path_for(resource)
+    if resource.role.nil? || resource.role.empty?
+      role_choice_path
+    elsif resource.admin?
+      admin_dashboard_path
+    elsif resource.trader?
+      trader_dashboard_path
+    else
+      root_path
     end
   end
-  
+end

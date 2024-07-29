@@ -1,11 +1,13 @@
 <h1>Users List</h1>
 
 <ul>
-  <% @users.each do |user| %>
-    <li>
-      <%= link_to user.username, user_path(user) %>
-    </li>
+  <% if @users.present? %>
+    <% @users.each do |user| %>
+      <li>
+        <%= link_to user.username, user_path(user) %>
+      </li>
+    <% end %>
+  <% else %>
+    <p>No users found.</p>
   <% end %>
 </ul>
-
-<%= link_to 'New User', new_user_path %>

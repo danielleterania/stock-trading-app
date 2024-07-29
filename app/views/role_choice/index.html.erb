@@ -1,0 +1,16 @@
+<!-- app/views/role_choice/index.html.erb -->
+<h1>Select Your Role</h1>
+
+<%= form_with url: role_choice_path, method: :put do %>
+  <div>
+    <%= radio_button_tag :role, 'admin' %>
+    <%= label_tag :role_admin, 'Admin' %>
+  </div>
+  <div>
+    <%= radio_button_tag :role, 'trader' %>
+    <%= label_tag :role_trader, 'Trader' %>
+  </div>
+  <div>
+    <%= submit_tag 'Submit' %>
+  </div>
+<% end %>
