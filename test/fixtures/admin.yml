@@ -1,0 +1,11 @@
+admin:
+  username: adminuser
+  email: admin@example.com
+  password_digest: <%= BCrypt::Password.create('password') %>
+  user_type: admin
+
+regular_user:
+  username: regularuser
+  email: user@example.com
+  password_digest: <%= BCrypt::Password.create('password') %>
+  user_type: trader
